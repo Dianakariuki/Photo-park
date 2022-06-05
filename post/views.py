@@ -35,3 +35,15 @@ def like(request, post_id):
         new_like = Like(user=user, post=post)
         new_like.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def follow(request, user_id):
+    user = request.user
+    other_user = User.objects.get(pk=user_id)
+    follow = Follow.objects.filter(follower=user, followed=other_user)
+    if follow:
+        follow.delete()
+    else:
+        new_follow = Follow(follower=user, followed=other_user)
+        new_follow.save()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
