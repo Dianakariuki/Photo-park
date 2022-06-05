@@ -24,3 +24,14 @@ def comment(request, post_id):
             comment_form.save()
 
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
+def like(request, post_id):
+    user = request.user
+    post = Post.objects.get(pk=post_id)
+    like = Like.objects.filter(user=user, post=post)
+    if like:
+        like.delete()
+    else:
+        new_like = Like(user=user, post=post)
+        new_like.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
