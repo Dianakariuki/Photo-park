@@ -35,7 +35,7 @@ def index(request):
 
     context = {'upload_form': upload_form, 'posts':posts, 'liked_posts': liked_posts, 'all_users':all_users, 'followed': followed}
 
-    return render(request, 'photos/index.html',context)
+    return render(request, 'posts/index.html',context)
 
 
 def register_user(request):
