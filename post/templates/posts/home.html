@@ -1,0 +1,88 @@
+{% extends 'photos/base.html'%}
+{% load bootstrap4%}
+{% block content%}
+ 
+
+ <section>
+   <div class="row">
+     <div class="col-md-6">
+
+     </div>
+     <div class="col md-6">
+       
+     </div>
+   </div>
+ </section>
+ {% for image in images %}
+ <section class="main">
+ <div class="col-md-6">
+  <div class="post">
+    <div class="info">
+        <div class="user">
+            <div class="profile-pic"><img src="{{image.image.url}}" alt=""></div>
+            <p class="username">modern_w</p>
+        </div>
+        <img src="" class="options" alt="">
+    </div>
+    <img src="{{image.image.url}}" class="post-image" alt="">
+    <div class="post-content">
+        <div class="reaction-wrapper">
+            <img src="/media/img/like.PNG" class="icon" alt="">
+            <img src="/media/img/comment.PNG" class="icon" alt="">
+            <img src="/media/img/send.PNG" class="icon" alt="">
+            <img src="/media/img/save.PNG" class="save icon" alt="">
+        </div>
+        <p class="likes">1,012 likes</p>
+        <p class="description"><span>username </span> {{image.caption}}</p>
+        <p class="post-time">{{image.pub_date}}</p>
+    </div>
+    <div class="comment-wrapper">
+        <form action="/comments">
+          <img src="img/smile.PNG" class="icon" alt="">
+          <input type="text" class="comment-box" placeholder="Add a comment">
+          <button class="comment-btn">post</button>
+       </form>
+       
+       
+    </div>
+</div>
+ </div>
+</section>
+{% endfor %}
+
+ <!-- modal for uploading posts-->
+ <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="card p-5" style="width: auto;">
+          <div class="cad-body">
+           <form action="{% url 'home'%}" method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+             {% bootstrap_form post_form %}
+             <input type="submit" class="btn btn-success btn-lg" value="Post">
+             
+          </form>
+         </div>
+        </div>
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+   </div>
+ </div>
+ 
+
+{%endblock%}
