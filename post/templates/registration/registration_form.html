@@ -1,0 +1,64 @@
+{% extends 'registration/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+
+<div class="container">
+  <div class="row  pt-5">
+    <!-- Empty div -->
+    <div class="col-md-6">
+      <img src="/static/img/instagramlogo-removebg-preview (1).png" alt="">
+    </div>
+    <div class="col-md-6">
+
+      {% if form.errors %}
+        <p> Password or Username is incorrect </p>
+      {% endif %}
+     <div class="card" style="width: 25rem; height: 55rem;">
+     
+        <div class="card-heading">
+          <h3 class="text-center">
+            <img src="/media/images/" alt="" height="120px">
+          </h3>
+        </div>
+        <div class="card-body">
+
+          <form  action="/accounts/register/" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-sm" value="SignUp">
+            </div>
+
+            <input type="hidden" name="next" value="/accounts/login/">
+           
+
+          </form>
+          
+
+        </div>
+
+      </div>
+
+      <!-- download options -->
+      <div class="card  mt-3 " style="border: none; width : 25rem;">
+        <div class="card-text">
+          <p class="text-center">Get the app:</p>
+           <div class="d-flex justify-content-center">
+             <img width="200px" src="/media/images/googleplay-removebg-preview.png" alt="">
+             <img  width="200px"  src="/media/images/appstore-removebg-preview.png" alt="">
+
+           </div>
+        </div>
+      </div>
+     </div>
+
+    </div>
+   
+  </div>
+</div>
+
+
+
+{% endblock %}
