@@ -96,6 +96,10 @@ class Follow(models.Model):
 
     def __str__(self):
         return self.follower
+    
+class Like(models.Model):
+	user = models.ForeignKey(User, related_name='likes', on_delete=models.CASCADE)
+	post = models.ForeignKey(Post, related_name='likes', on_delete=models.CASCADE)
 
 
     
