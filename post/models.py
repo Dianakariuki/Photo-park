@@ -21,6 +21,22 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+        
+        
+    def save_profile(self):
+        self.user
+
+    def delete_profile(self):
+        self.delete()
+
+    @classmethod
+    def search_profile(cls, search_term):
+        return cls.objects.filter(user__username__icontains=search_term).all()
+    def __str__(self):
+        return f"{self.user.first_name}'s Profile"
+        
+        
+    
 
 class Post(models.Model):
     image = models.ImageField()
