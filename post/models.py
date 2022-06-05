@@ -4,8 +4,10 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     image = models.ImageField()
+    title = models.CharField(max_length=50)
     description = models.TextField()
-    author = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts', null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
     
     class Meta:
         '''
