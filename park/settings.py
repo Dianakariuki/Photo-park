@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'post',
+    # 'post',
     'bootstrap4',
-    'photos.apps.PhotosConfig', 
+    'post.apps.PostConfig', 
     'tinymce',
 ]
 
