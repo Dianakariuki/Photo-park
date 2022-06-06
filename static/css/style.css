@@ -25,8 +25,8 @@ li {
 }
 
 #navWrapper {
-  background-color: palevioletred;
-  max-width: 100%;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(67,9,121,1) 35%, rgba(0,212,255,1) 100%);  max-width: 100%;
   z-index: 1000;
   position: fixed;
   box-shadow: 4px 4px 1px grey;
