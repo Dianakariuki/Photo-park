@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from cloudinary.models import CloudinaryField
 
 
 class Profile(models.Model):
@@ -39,7 +40,7 @@ class Profile(models.Model):
     
 
 class Post(models.Model):
-    image = models.ImageField()
+    image = CloudinaryField('image')
     title = models.CharField(max_length=50)
     description = models.TextField()
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts', null=True)
